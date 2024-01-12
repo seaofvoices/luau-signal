@@ -1,0 +1,15 @@
+/site
+/*.rbxl
+/*.rbxlx
+/*.rbxl.lock
+/*.rbxlx.lock
+/*.rbxm
+/*.rbxmx
+
+/node_modules
+/roblox
+/build
+
+/globalTypes.d.lua
+
+**/sourcemap.json

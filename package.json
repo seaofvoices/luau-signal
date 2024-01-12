@@ -1,0 +1,25 @@
+{
+  "name": "luau-signal",
+  "version": "0.1.0",
+  "description": "A simple signal utility",
+  "keywords": ["lua", "luau", "roblox", "signal"],
+  "author": "jeparlefrancais <jeparlefrancais21@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/seaofvoices/luau-signal.git"
+  },
+  "homepage": "https://github.com/seaofvoices/npmluau#readme",
+  "license": "MIT",
+  "main": "./src/init.lua",
+  "scripts": {
+    "prepare": "npmluau",
+    "build": "sh ./scripts/build.sh",
+    "lint": "sh ./scripts/analyze.sh",
+    "format": "stylua .",
+    "style-check": "stylua . --check",
+    "clean": "rm -rf node_modules roblox build"
+  },
+  "devDependencies": {
+    "npmluau": "^0.1.1"
+  }
+}
