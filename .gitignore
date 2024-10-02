@@ -11,5 +11,6 @@
 /build
 
 /globalTypes.d.lua
+.yarn
 
 **/sourcemap.json

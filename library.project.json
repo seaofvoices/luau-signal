@@ -1,6 +1,9 @@
 {
   "name": "Signal",
   "tree": {
-    "$path": "./src"
+    "$path": "src",
+    "node_modules": {
+      "$path": "node_modules"
+    }
   }
 }

@@ -1,5 +1,5 @@
 {
-  "process": [
+  "rules": [
     {
       "rule": "inject_global_value",
       "identifier": "LUA_ENV",
@@ -10,13 +10,22 @@
       "identifier": "__DEV__",
       "value": true
     },
+    "remove_unused_if_branch",
     {
       "rule": "convert_require",
-      "current": "path",
-      "target": "roblox"
+      "current": {
+        "name": "path",
+        "sources": {
+          "@pkg": "node_modules/.luau-aliases"
+        }
+      },
+      "target": {
+        "name": "roblox",
+        "rojo_sourcemap": "sourcemap.json",
+        "indexing_style": "wait_for_child"
+      }
     },
     "compute_expression",
-    "remove_unused_if_branch",
     "remove_unused_while",
     "filter_after_early_return",
     "remove_nil_declaration",

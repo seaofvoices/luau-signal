@@ -1,8 +1,14 @@
 {
   "bundle": {
-    "require_mode": "path"
+    "require_mode": {
+      "name": "path",
+      "sources": {
+        "@pkg": "node_modules/.luau-aliases"
+      }
+    },
+    "excludes": ["@lune/**"]
   },
-  "process": [
+  "rules": [
     {
       "rule": "inject_global_value",
       "identifier": "LUA_ENV",
