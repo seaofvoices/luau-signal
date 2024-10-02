@@ -2,7 +2,12 @@
   "name": "luau-signal",
   "version": "0.1.0",
   "description": "A simple signal utility",
-  "keywords": ["lua", "luau", "roblox", "signal"],
+  "keywords": [
+    "lua",
+    "luau",
+    "roblox",
+    "signal"
+  ],
   "author": "jeparlefrancais <jeparlefrancais21@gmail.com>",
   "repository": {
     "type": "git",
@@ -19,7 +24,11 @@
     "style-check": "stylua . --check",
     "clean": "rm -rf node_modules roblox build"
   },
+  "dependencies": {
+    "luau-task": "^1.0.1"
+  },
   "devDependencies": {
     "npmluau": "^0.1.1"
-  }
+  },
+  "packageManager": "yarn@4.5.0"
 }

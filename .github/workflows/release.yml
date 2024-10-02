@@ -24,18 +24,65 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Enable corepack
+        run: corepack enable
+
       - uses: actions/setup-node@v3
         with:
-          node-version: "latest"
-          cache: "yarn"
-          cache-dependency-path: "yarn.lock"
+          node-version: latest
+          registry-url: https://registry.npmjs.org
+          cache: yarn
+          cache-dependency-path: yarn.lock
 
       - name: Install packages
-        run: yarn install --frozen-lockfile
+        run: yarn install --immutable
 
-      - run: yarn publish
+      - name: Run npmluau
+        run: yarn run prepare
+
+      - name: Authenticate yarn
+        run: |-
+          yarn config set npmAlwaysAuth true
+          yarn config set npmAuthToken $NPM_AUTH_TOKEN
         env:
           NPM_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Publish to npm
+        run: yarn npm publish --access public
+
+  publish-wally-package:
+    needs: publish-package
+
+    name: Publish wally package
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Enable corepack
+        run: corepack enable
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: latest
+          registry-url: https://registry.npmjs.org
+          cache: yarn
+          cache-dependency-path: yarn.lock
+
+      - name: Install packages
+        run: yarn install --immutable
+
+      - name: Run npmluau
+        run: yarn run prepare
+
+      - name: Convert package to wally
+        run: yarn dlx npmwally convert --output build/wally
+
+      - name: Login to wally
+        run: wally login --project-path build/wally --token ${{ secrets.WALLY_ACCESS_TOKEN }}
+
+      - name: Publish to wally
+        run: wally publish --project-path build/wally
 
   create-release:
     needs: publish-package
@@ -96,18 +143,25 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Enable corepack
+        run: corepack enable
+
       - uses: Roblox/setup-foreman@v1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
 
       - uses: actions/setup-node@v3
         with:
-          node-version: "latest"
-          cache: "yarn"
-          cache-dependency-path: "yarn.lock"
+          node-version: latest
+          registry-url: https://registry.npmjs.org
+          cache: yarn
+          cache-dependency-path: yarn.lock
 
       - name: Install packages
-        run: yarn install --frozen-lockfile
+        run: yarn install --immutable
+
+      - name: Run npmluau
+        run: yarn run prepare
 
       - name: Build assets
         run: yarn run build

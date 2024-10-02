@@ -1,3 +1,5 @@
+local task = require('@pkg/luau-task')
+
 local Connection = require('./Connection')
 export type Connection = Connection.Connection
 

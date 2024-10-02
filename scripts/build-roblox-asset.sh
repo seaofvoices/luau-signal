@@ -11,8 +11,13 @@ if [ ! -d node_modules ]; then
     yarn prepare
 fi
 
+rojo sourcemap library.project.json --output sourcemap.json
+
 rm -rf $CODE_OUTPUT/src
+rm -rf $CODE_OUTPUT/node_modules
+
 darklua process --config $DARKLUA_CONFIG src $CODE_OUTPUT/src
+darklua process --config $DARKLUA_CONFIG node_modules $CODE_OUTPUT/node_modules
 
 cp -r library.project.json $CODE_OUTPUT/
 
