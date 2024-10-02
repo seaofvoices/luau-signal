@@ -4,3 +4,4 @@ selene = { github = "Kampfkarren/selene", version = "=0.27.1"}
 stylua = { github = "JohnnyMorganz/styLua", version = "=0.19.1" }
 darklua = { github = "seaofvoices/darklua", version = "=0.13.1"}
 luau-lsp = { github = "JohnnyMorganz/luau-lsp", version = "=1.32.4"}
+wally = { github = "UpliftGames/wally", version = "=0.3.2" }
