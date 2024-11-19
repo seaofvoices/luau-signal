@@ -3,6 +3,10 @@ local task = require('@pkg/luau-task')
 local Connection = require('./Connection')
 export type Connection = Connection.Connection
 
+export type ConnectableSignal<T...> = {
+    connect: (self: ConnectableSignal<T...>, callback: (T...) -> ()) -> Connection,
+}
+
 export type Signal<T...> = {
     fire: (self: Signal<T...>, T...) -> (),
     connect: (self: Signal<T...>, callback: (T...) -> ()) -> Connection,
