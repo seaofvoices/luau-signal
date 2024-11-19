@@ -1,5 +1,6 @@
 {
     "luau-lsp.require.directoryAliases": {
         "@pkg": "node_modules/.luau-aliases"
-    }
+    },
+    "stylua.targetReleaseVersion": "v2.0.1"
 }

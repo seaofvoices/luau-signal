@@ -22,7 +22,8 @@
     "lint": "sh ./scripts/analyze.sh",
     "format": "stylua .",
     "style-check": "stylua . --check",
-    "clean": "rm -rf node_modules roblox build"
+    "clean": "rm -rf node_modules roblox build",
+    "verify-pack": "yarn pack --dry-run"
   },
   "dependencies": {
     "luau-task": "^1.0.1"
