@@ -1,5 +1,7 @@
 # Changelog
 
+## 0.1.2
+
 - add new signal kind that fires with the last fired value ([#4](https://github.com/seaofvoices/luau-signal/pull/4))
 
 ## 0.1.1
