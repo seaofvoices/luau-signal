@@ -4,7 +4,12 @@ A typed Luau signal library.
 
 Signals are a lightweight communication mechanism used to facilitate the exchange of information between different components or modules of a software system. Signals allow parts of a program to notify others without having a dependency on them. This decoupled approach promotes modularity, making it easier to manage and maintain complex systems by broadcasting data in messages without requiring direct knowledge of their recipients.
 
-# Installation
+This library contains two kind of signals:
+
+- `Signal.new()`: a typical signal that you can connect to and fire values
+- `Signal.newSubject(...)`: a signal that execute functions when they connect with the most recent value (and also with the next fired values)
+
+## Installation
 
 Add `luau-signal` in your dependencies:
 
@@ -47,6 +52,10 @@ connection:disconnect()
 ### `Signal.new<T...>(): Signal<T...>`
 
 Creates a new signal instance.
+
+### `Signal.newSubject<T...>(...: T...): Signal<T...>`
+
+Creates a new signal instance, except that when connecting to the signal, the callback will be immediately called with the most recent value. The arguments given to `newSubject` are the initial values that will be passed to function when they connect before anything was fire on the signal.
 
 ### `Signal:fire<T...>(...: T...)`
 
